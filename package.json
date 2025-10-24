@@ -37,6 +37,8 @@
   },
   "homepage": "https://github.com/filipedsantos/acquisitions-api#readme",
   "dependencies": {
+    "@arcjet/inspect": "^1.0.0-beta.13",
+    "@arcjet/node": "^1.0.0-beta.13",
     "@neondatabase/serverless": "^1.0.2",
     "bcrypt": "^6.0.0",
     "clear": "^0.1.0",
