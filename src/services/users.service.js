@@ -114,7 +114,7 @@ export const updateUser = async (id, updates) => {
   }
 };
 
-export const deleteUserById = async id => {
+export const deleteUser = async id => {
   try {
     // First check if user exists
     await getUserById(id);

@@ -14,7 +14,17 @@ services:
       - ./.neon_local/:/tmp/.neon_local
       - ./.git/HEAD:/tmp/.git/HEAD:ro,consistent
     healthcheck:
-      test: ['CMD', 'pg_isready', '-h', 'localhost', '-p', '5432', '-U', 'neondb_owner']
+      test:
+        [
+          'CMD',
+          'pg_isready',
+          '-h',
+          'localhost',
+          '-p',
+          '5432',
+          '-U',
+          'neondb_owner',
+        ]
       interval: 10s
       timeout: 5s
       retries: 10

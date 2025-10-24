@@ -18,16 +18,18 @@ This guide explains how to run the Acquisitions API using Docker with different 
 ### Development Environment
 
 1. **Set up environment variables**:
+
    ```bash
    # Copy the example environment file
    cp .env.example .env.development
-   
+
    # Edit .env.development with your Neon credentials
    # Get your API key from: https://console.neon.tech/app/settings/api-keys
    # Get your project ID from your Neon dashboard
    ```
 
 2. **Start development environment**:
+
    ```bash
    npm run dev:docker
    # OR manually:
@@ -41,10 +43,11 @@ This guide explains how to run the Acquisitions API using Docker with different 
 ### Production Environment
 
 1. **Set up environment variables**:
+
    ```bash
    # Copy and configure production environment
    cp .env.example .env.production
-   
+
    # Edit .env.production with your production values
    # Make sure to use your actual Neon Cloud database URL
    # Set a strong JWT secret
@@ -103,6 +106,7 @@ ARCJET_KEY=your_arcjet_key_here
 ## Architecture
 
 ### Development Architecture
+
 ```
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
 │   Developer     │    │   Docker Host    │    │   Neon Cloud    │
@@ -122,6 +126,7 @@ ARCJET_KEY=your_arcjet_key_here
 ```
 
 ### Production Architecture
+
 ```
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
 │   Client        │    │   Docker Host    │    │   Neon Cloud    │
@@ -246,11 +251,13 @@ docker compose -f docker-compose.dev.yml exec neon-local psql -U neondb_owner -d
 ## Security Considerations
 
 ### Development
+
 - Uses development JWT secret (not for production)
 - Neon Local proxy provides isolated branch environment
 - Debug logging enabled for troubleshooting
 
 ### Production
+
 - Strong JWT secrets required
 - Production logging levels
 - Resource limits and health checks
@@ -259,11 +266,13 @@ docker compose -f docker-compose.dev.yml exec neon-local psql -U neondb_owner -d
 ## Performance Notes
 
 ### Development
+
 - Hot reload enabled for faster development
 - Debug logging may impact performance
 - Ephemeral branches are created/destroyed as needed
 
 ### Production
+
 - Optimized Node.js production build
 - Memory and CPU limits prevent resource exhaustion
 - Connection pooling via Neon's built-in pooler

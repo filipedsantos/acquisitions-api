@@ -5,6 +5,7 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 ## Development Commands
 
 ### Essential Commands
+
 ```bash
 # Start development server with auto-reload
 npm run dev
@@ -22,11 +23,13 @@ npm run db:studio      # Open Drizzle Studio for database inspection
 ```
 
 ### Running Single Tests
+
 This project doesn't have a test framework configured yet. When implementing tests, add test scripts to package.json.
 
 ## Architecture Overview
 
 ### Technology Stack
+
 - **Runtime**: Node.js with ES modules
 - **Framework**: Express.js 5.x
 - **Database**: PostgreSQL with Drizzle ORM
@@ -37,6 +40,7 @@ This project doesn't have a test framework configured yet. When implementing tes
 - **Code Quality**: ESLint + Prettier
 
 ### Project Structure
+
 ```
 src/
 ├── config/          # Configuration modules (database, logger)
@@ -55,29 +59,34 @@ src/
 ### Key Architectural Patterns
 
 **Import Path Mapping**: The project uses Node.js subpath imports for clean imports:
+
 - `#src/*` → `./src/*`
 - `#config/*` → `./src/config/*`
 - `#controllers/*` → `./src/controllers/*`
 - And so on for all major directories
 
 **Layered Architecture**:
+
 - **Routes** → **Controllers** → **Services** → **Database Models**
 - Controllers handle HTTP concerns (validation, responses)
 - Services contain business logic
 - Models define database schemas using Drizzle ORM
 
 **Authentication Flow**:
+
 - JWT tokens stored in HTTP-only cookies
 - Password hashing with bcrypt (12 rounds)
 - User sessions managed through cookie-based tokens
 - Authentication endpoints: `/api/auth/sign-up`, `/api/auth/sign-in`, `/api/auth/sign-out`
 
 **Database Management**:
+
 - Drizzle ORM with Neon PostgreSQL adapter
 - Schema-first approach with migrations in `/drizzle`
 - Database configuration in `src/config/database.js`
 
 **Error Handling & Logging**:
+
 - Centralized Winston logging with file rotation
 - Structured error responses with validation details
 - Environment-aware logging (console in dev, files in production)
@@ -85,11 +94,13 @@ src/
 ## Database Schema
 
 Current tables:
+
 - **users**: Core user authentication with roles (user/admin)
 
 ## Environment Configuration
 
 Required environment variables:
+
 ```bash
 PORT=3000
 NODE_ENV=development
